@@ -41,10 +41,12 @@ cc.Class({
       this.node.runAction(cc.spawn(anim1, anim2))
 
       messagePipeline.sendMessage('onLevelUp', this.currentLevel)
+      messagePipeline.sendMessage('SOUND_PLAY', 'levelup')
     } else {
       let anim = cc.scaleTo(0.1, this.currentSize)
       this.node.runAction(anim)
     }
+    messagePipeline.sendMessage('SOUND_PLAY', 'eat')
   },
 
   blacken() {

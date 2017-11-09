@@ -56,9 +56,7 @@
     "EditorBox",
     "VideoPlayer",
     "WebView",
-    "AudioSource",
     "MotionStreak",
-    "Audio",
     "DragonBones",
     "StudioComponent"
   ],

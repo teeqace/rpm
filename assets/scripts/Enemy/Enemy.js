@@ -1,3 +1,6 @@
+import {
+  messagePipeline
+} from 'MessagePipeline'
 import EBStraight from '../EnemyBehaviors/EBStraight'
 import EBRotate from '../EnemyBehaviors/EBRotate'
 import EBClockRotate from '../EnemyBehaviors/EBClockRotate'
@@ -136,6 +139,7 @@ cc.Class({
     if (!this.isEaten && !this.isWhite && other.node.group === 'cursor') {
       this.isWhite = true
       this.anim.play('EnemyWhiten')
+      messagePipeline.sendMessage('SOUND_PLAY', 'white')
     }
     if (other.node.group === 'player') {
       this.isEaten = true

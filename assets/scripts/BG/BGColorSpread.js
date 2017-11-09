@@ -70,6 +70,11 @@ cc.Class({
     messagePipeline.on('onLevelUp', this._onLevelUp, this)
     messagePipeline.on('onGameOver', this._onGameOver, this)
     messagePipeline.on('onReset', this._onReset, this)
+
+    messagePipeline.on('onBeat', this._onBeat, this)
+    messagePipeline.on('onBar', this._onBar, this)
+    this.onBeatAnim = cc.sequence(cc.scaleTo(0, 0.6), cc.scaleTo(1, 0.5))
+    this.onBarAnim = cc.sequence(cc.scaleTo(0, 0.6), cc.scaleTo(4, 0.5))
   },
 
   _onReset() {
@@ -102,9 +107,14 @@ cc.Class({
     this.anim.play('BGGameOver')
     // this.enemySpawnInterval = Math.max(1 - 0.05 * (level - 1), 0.1)
     // this.enemySpeedBase = Math.min(200, this.enemySpeedBase + 5)
-  }
-  // called every frame, uncomment this function to activate update callback
-  // update: function (dt) {
+  },
+  
+  _onBeat() {
+    this.BGColor3.runAction(this.onBeatAnim)
+  },
 
-  // },
+  _onBar() {
+    this.BGColor2.runAction(this.onBarAnim)
+  }
+  
 });
